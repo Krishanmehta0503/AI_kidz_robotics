@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate Arduino Program</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:#0f172a;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        .hero-section{
+            min-height:100vh;
+            background:
+            linear-gradient(rgba(15,23,42,0.85),rgba(15,23,42,0.95)),
+            url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop');
+            background-size:cover;
+            background-position:center;
+            display:flex;
+            align-items:center;
+            position:relative;
+        }
+
+        .hero-section::before{
+            content:'';
+            position:absolute;
+            width:400px;
+            height:400px;
+            background:#3b82f6;
+            filter:blur(180px);
+            top:-120px;
+            left:-100px;
+            opacity:0.5;
+        }
+
+        .hero-section::after{
+            content:'';
+            position:absolute;
+            width:350px;
+            height:350px;
+            background:#06b6d4;
+            filter:blur(180px);
+            bottom:-100px;
+            right:-100px;
+            opacity:0.4;
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:2;
+        }
+
+        .badge-custom{
+            display:inline-block;
+            background:rgba(59,130,246,0.2);
+            border:1px solid rgba(255,255,255,0.2);
+            padding:10px 22px;
+            border-radius:50px;
+            margin-bottom:20px;
+            color:#93c5fd;
+            font-weight:500;
+        }
+
+        .hero-title{
+            font-size:4rem;
+            font-weight:700;
+            line-height:1.2;
+            margin-bottom:20px;
+        }
+
+        .gradient-text{
+            background:linear-gradient(90deg,#38bdf8,#60a5fa,#818cf8);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .hero-description{
+            color:#cbd5e1;
+            font-size:1.1rem;
+            max-width:700px;
+            line-height:1.8;
+        }
+
+        .hero-buttons{
+            margin-top:35px;
+            display:flex;
+            gap:15px;
+            flex-wrap:wrap;
+        }
+
+        .btn-custom{
+            padding:14px 32px;
+            border-radius:12px;
+            font-weight:600;
+            transition:0.4s ease;
+            text-decoration:none;
+        }
+
+        .btn-primary-custom{
+            background:linear-gradient(90deg,#2563eb,#06b6d4);
+            color:white;
+            border:none;
+        }
+
+        .btn-primary-custom:hover{
+            transform:translateY(-5px);
+            box-shadow:0 15px 30px rgba(37,99,235,0.35);
+            color:white;
+        }
+
+        .btn-outline-custom{
+            border:1px solid rgba(255,255,255,0.25);
+            color:white;
+            background:rgba(255,255,255,0.05);
+        }
+
+        .btn-outline-custom:hover{
+            background:white;
+            color:#0f172a;
+        }
+
+        .section-padding{
+            padding:100px 0;
+        }
+
+        .section-title{
+            text-align:center;
+            margin-bottom:70px;
+        }
+
+        .section-title h2{
+            font-size:3rem;
+            font-weight:700;
+        }
+
+        .section-title p{
+            color:#cbd5e1;
+            max-width:700px;
+            margin:auto;
+            margin-top:15px;
+        }
+
+        .feature-card{
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.08);
+            backdrop-filter:blur(10px);
+            border-radius:25px;
+            padding:35px;
+            height:100%;
+            transition:0.4s ease;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .feature-card::before{
+            content:'';
+            position:absolute;
+            width:120px;
+            height:120px;
+            background:rgba(59,130,246,0.15);
+            border-radius:50%;
+            top:-40px;
+            right:-40px;
+        }
+
+        .feature-card:hover{
+            transform:translateY(-10px);
+            border-color:#38bdf8;
+            box-shadow:0 15px 40px rgba(0,0,0,0.35);
+        }
+
+        .feature-icon{
+            width:75px;
+            height:75px;
+            border-radius:18px;
+            background:linear-gradient(135deg,#2563eb,#06b6d4);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:2rem;
+            margin-bottom:25px;
+        }
+
+        .feature-card h4{
+            font-weight:600;
+            margin-bottom:15px;
+        }
+
+        .feature-card p{
+            color:#cbd5e1;
+            line-height:1.8;
+        }
+
+        .timeline{
+            position:relative;
+            max-width:900px;
+            margin:auto;
+        }
+
+        .timeline::before{
+            content:'';
+            position:absolute;
+            left:50%;
+            width:4px;
+            background:#38bdf8;
+            top:0;
+            bottom:0;
+            transform:translateX(-50%);
+        }
+
+        .timeline-item{
+            position:relative;
+            width:50%;
+            padding:20px 40px;
+        }
+
+        .timeline-item:nth-child(odd){
+            left:0;
+            text-align:right;
+        }
+
+        .timeline-item:nth-child(even){
+            left:50%;
+        }
+
+        .timeline-content{
+            background:rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:20px;
+            padding:30px;
+            transition:0.4s ease;
+        }
+
+        .timeline-content:hover{
+            transform:scale(1.03);
+            border-color:#38bdf8;
+        }
+
+        .timeline-dot{
+            position:absolute;
+            width:22px;
+            height:22px;
+            background:#38bdf8;
+            border-radius:50%;
+            top:40px;
+            right:-11px;
+            z-index:2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot{
+            left:-11px;
+        }
+
+        .project-section{
+            background:linear-gradient(135deg,#111827,#1e293b);
+        }
+
+        .project-card{
+            background:#111827;
+            border-radius:25px;
+            overflow:hidden;
+            transition:0.4s ease;
+            border:1px solid rgba(255,255,255,0.08);
+            height:100%;
+        }
+
+        .project-card:hover{
+            transform:translateY(-12px);
+            box-shadow:0 18px 40px rgba(0,0,0,0.4);
+        }
+
+        .project-img{
+            height:240px;
+            overflow:hidden;
+        }
+
+        .project-img img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition:0.5s ease;
+        }
+
+        .project-card:hover img{
+            transform:scale(1.08);
+        }
+
+        .project-content{
+            padding:30px;
+        }
+
+        .project-content h4{
+            margin-bottom:15px;
+            font-weight:600;
+        }
+
+        .project-content p{
+            color:#cbd5e1;
+            line-height:1.7;
+        }
+
+        .cta-section{
+            padding:100px 0;
+            text-align:center;
+            position:relative;
+        }
+
+        .cta-box{
+            background:linear-gradient(135deg,#2563eb,#06b6d4);
+            padding:70px 40px;
+            border-radius:35px;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .cta-box::before{
+            content:'';
+            position:absolute;
+            width:300px;
+            height:300px;
+            background:rgba(255,255,255,0.15);
+            border-radius:50%;
+            top:-120px;
+            right:-100px;
+        }
+
+        .cta-box h2{
+            font-size:3rem;
+            font-weight:700;
+            position:relative;
+            z-index:2;
+        }
+
+        .cta-box p{
+            position:relative;
+            z-index:2;
+            max-width:700px;
+            margin:20px auto;
+            color:#e2e8f0;
+            line-height:1.8;
+        }
+
+        footer{
+            background:#020617;
+            padding:30px 0;
+            text-align:center;
+            color:#94a3b8;
+        }
+
+        @media(max-width:991px){
+            .hero-title{
+                font-size:3rem;
+            }
+
+            .timeline::before{
+                left:20px;
+            }
+
+            .timeline-item{
+                width:100%;
+                padding-left:60px;
+                padding-right:20px;
+                text-align:left !important;
+            }
+
+            .timeline-item:nth-child(even){
+                left:0;
+            }
+
+            .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot{
+                left:9px;
+            }
+        }
+
+        @media(max-width:768px){
+            .hero-title{
+                font-size:2.3rem;
+            }
+
+            .section-title h2{
+                font-size:2.2rem;
+            }
+
+            .cta-box h2{
+                font-size:2rem;
+            }
+        }
+        /* Footer */
+        .footer-section {
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color: #cbd5e1;
+    padding: 70px 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle stars */
+.footer-section::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.25;
+}
+
+/* LOGO */
+.footer-logo {
+    color: #00d4ff;
+    font-weight: bold;
+}
+
+/* TEXT */
+.footer-text {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* LINKS */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00c6ff;
+    padding-left: 5px;
+}
+
+/* SOCIAL ICONS */
+.social-icons i {
+    font-size: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    color: #00c6ff;
+    transform: scale(1.3);
+}
+
+/* NEWSLETTER */
+.newsletter {
+    display: flex;
+    margin-top: 10px;
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 25px 0 0 25px;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter button:hover {
+    box-shadow: 0 0 15px #00c6ff;
+}
+
+/* BOTTOM */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 30px;
+    padding-top: 15px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .newsletter {
+        flex-direction: column;
+    }
+
+    .newsletter input {
+        border-radius: 25px;
+        margin-bottom: 10px;
+    }
+
+    .newsletter button {
+        border-radius: 25px;
+    }
+}
+/* Header */
+.navbar {
+    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar-brand {
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #00c6ff;
+    bottom: -4px;
+    left: 0;
+    transition: 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cart-icon {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-icon span {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: red;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+<div class="container-fluid w-100 h-100">
+            <div class="row ">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-fluid">
+                        <div class="navbar-collapse" id="navbarNav">
+                            <a class="navbar-brand" href="#">
+                                <img src="../Images/JPEG/logo_2.png" class="image" style="height: 48px;">
+                            </a>
+
+                            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/navbar.html">Home</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/about.html">About</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/product.html">Products</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/contact.html">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="btn btn-primary ms-2">Register Now</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center text-lg-start">
+                <span class="badge-custom">
+                    🚀 Intermediate Arduino & Robotics Program
+                </span>
+
+                <h1 class="hero-title">
+                    Build Intelligent <br>
+                    <span class="gradient-text">Smart Machines</span>
+                </h1>
+
+                <p class="hero-description">
+                    Step into the world of advanced electronics and automation. Learn how to program Arduino using C++, integrate smart sensors, build autonomous robots, and create real-world prototypes that solve modern problems.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#features" class="btn-custom btn-primary-custom">
+                        Explore Modules
+                    </a>
+
+                    <a href="#projects" class="btn-custom btn-outline-custom">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FEATURES SECTION -->
+    <section class="section-padding" id="features">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>What You Will Learn</h2>
+                <p>
+                    Upgrade your Arduino and robotics journey with practical learning, sensor integration, wireless communication, and intelligent automation systems.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-cpu-fill"></i>
+                        </div>
+                        <h4>Mastering Arduino</h4>
+                        <p>
+                            Gain in-depth knowledge of microcontrollers, digital & analog pins, PWM, voltage handling, and advanced I/O operations using Arduino boards.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h4>Programming in C++</h4>
+                        <p>
+                            Transition from drag-and-drop block coding to real-world Arduino IDE programming using C++ syntax, functions, loops, and logic building.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-broadcast-pin"></i>
+                        </div>
+                        <h4>Smart Sensor Integration</h4>
+                        <p>
+                            Work with Ultrasonic, IR, DHT11 temperature, and Sound sensors to create interactive and intelligent embedded systems.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-bluetooth"></i>
+                        </div>
+                        <h4>Wireless Communication</h4>
+                        <p>
+                            Control robots wirelessly using Bluetooth modules and mobile applications while understanding serial communication and remote commands.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <h4>Autonomous Machines</h4>
+                        <p>
+                            Design robots capable of thinking, sensing obstacles, reacting automatically, and making decisions without human interaction.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- LEARNING FLOW -->
+    <section class="section-padding">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Learning Journey</h2>
+                <p>
+                    Structured step-by-step learning flow designed for intermediate robotics and Arduino learners.
+                </p>
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Arduino Fundamentals</h4>
+                        <p>
+                            Learn microcontrollers, pins, circuits, current flow, and Arduino architecture.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>C++ Programming & Arduino IDE</h4>
+                        <p>
+                            Write professional Arduino programs using functions, conditions, loops, and modular coding.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Sensor Based Systems</h4>
+                        <p>
+                            Integrate IR, ultrasonic, temperature, and sound sensors into smart automation projects.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Wireless Robotics</h4>
+                        <p>
+                            Build Bluetooth controlled robots and connect mobile apps with hardware.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Autonomous Intelligence</h4>
+                        <p>
+                            Develop machines that automatically detect surroundings and take smart actions.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS SECTION -->
+<!-- PROJECTS SECTION -->
+<section class="section-padding project-section" id="projects">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Real-World Projects</h2>
+            <p>
+                Create advanced prototypes and automation systems that demonstrate
+                practical robotics and embedded technology skills.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Smart Dustbin -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="../Images/JPEG/dustbin.jpg" alt="Smart Dustbin">
+                    </div>
+                    <div class="project-content">
+                        <h4>Smart Dustbin</h4>
+                        <p>
+                            Build a touchless smart dustbin using ultrasonic sensors
+                            that automatically opens and closes the lid.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breadboard -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Breadboard Projects">
+                    </div>
+                    <div class="project-content">
+                        <h4>All Breadboard Projects using Arduino</h4>
+                        <p>
+                            Learn practical circuit building using LEDs, resistors,
+                            sensors, and Arduino-controlled breadboard experiments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Security Alarm">
+                    </div>
+                    <div class="project-content">
+                        <h4>Security Alarm</h4>
+                        <p>
+                            Design a smart security alarm using motion and sound
+                            sensors for home and office safety systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sensor -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc" alt="Sensor Projects">
+                    </div>
+                    <div class="project-content">
+                        <h4>Advanced Sensor Projects</h4>
+                        <p>
+                            Create intelligent automation projects using ultrasonic,
+                            temperature, gas, and IR sensors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voice -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Voice Control">
+                    </div>
+                    <div class="project-content">
+                        <h4>Voice Control Appliances</h4>
+                        <p>
+                            Control lights and appliances using voice assistants and
+                            Arduino-powered smart automation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bluetooth -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1526378800651-c3d0d4b0b44d" alt="Bluetooth">
+                    </div>
+                    <div class="project-content">
+                        <h4>Bluetooth Controlled Devices</h4>
+                        <p>
+                            Build wireless household automation systems controlled
+                            directly from a smartphone app.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LiFi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="LiFi">
+                    </div>
+                    <div class="project-content">
+                        <h4>LiFi System</h4>
+                        <p>
+                            Explore next-generation wireless communication using light
+                            signals for faster and secure data transfer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Obstacle -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a" alt="Robot Car">
+                    </div>
+                    <div class="project-content">
+                        <h4>Obstacle Avoiding Robot Car</h4>
+                        <p>
+                            Build an autonomous robotic car that detects obstacles
+                            and changes direction automatically.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Water -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8" alt="Water Level">
+                    </div>
+                    <div class="project-content">
+                        <h4>Water Level Controller</h4>
+                        <p>
+                            Automate water tank filling and motor control using smart
+                            level detection sensors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plant -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735" alt="Plant Watering">
+                    </div>
+                    <div class="project-content">
+                        <h4>Automatic Plant Watering</h4>
+                        <p>
+                            Create a smart irrigation system that waters plants
+                            automatically based on soil moisture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Railway -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3" alt="Railway">
+                    </div>
+                    <div class="project-content">
+                        <h4>Broken Railway Track Alert</h4>
+                        <p>
+                            Design a railway safety system that detects damaged tracks
+                            and sends instant alerts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gas -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22731d8c0f" alt="Gas Detector">
+                    </div>
+                    <div class="project-content">
+                        <h4>Gas Detector</h4>
+                        <p>
+                            Develop a gas leakage detection system with buzzer alerts
+                            for enhanced home safety.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to Build Smart Robots?</h2>
+                <p>
+                    Learn practical robotics, advanced Arduino programming, wireless automation, and intelligent sensor systems through hands-on projects and real-world applications.
+                </p>
+
+                <a href="#" class="btn-custom btn-outline-custom mt-3">
+                    Start Learning Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row">
+
+      <!-- BRAND -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h2 class="footer-logo">🚀 Kidz Robotics</h2>
+        <p class="footer-text">
+          Inspiring young minds through robotics, coding, and innovation.
+          Building the engineers of tomorrow.
+        </p>
+
+        <div class="social-icons">
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-linkedin"></i>
+          <i class="bi bi-youtube"></i>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Contact</h5>
+        <p>📧 info@kidzrobotics.com</p>
+        <p>📞 +91 9466975569</p>
+        <p>📍 India</p>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Stay Updated</h5>
+        <p>Subscribe for latest updates</p>
+
+        <div class="newsletter">
+          <input type="email" placeholder="Enter email">
+          <button>Send</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom text-center">
+      <p>© 2026 Kidz Robotics Academy | All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

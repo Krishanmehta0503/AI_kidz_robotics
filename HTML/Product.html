@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../CSS/Product.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Products</title>
+</head>
+<body>
+
+<!-- HEADER -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-info" href="../index.html">
+            🤖 RoboTech
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../beginner.html">Beginner</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../intermediate.html">Intermediate</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../advanced.html">Advanced</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../contact.html">Contact</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="product-hero">
+    <div class="hero-overlay">
+        <div class="container text-center text-white">
+
+            <span class="hero-badge">🚀 Kidz Robotics Store</span>
+
+            <h1>
+                Build.<br>
+                Learn.<br>
+                Innovate.
+            </h1>
+
+            <p>
+                Premium robotics kits, coding tools & STEM products
+                for future innovators.
+            </p>
+
+            <a href="#productList" class="hero-btn">
+                Explore Products
+            </a>
+
+        </div>
+    </div>
+</section>
+<!-- PRODUCTS -->
+<section class="container py-5 product-ui">
+
+    <h2 class="section-heading text-center">
+        Featured Products
+    </h2>
+
+    <div class="row g-4 mt-4" id="productList"></div>
+
+</section>
+
+
+<!-- PRODUCT DETAILS -->
+<section id="productDetail" class="container py-5 d-none">
+
+    <button onclick="goBack()" class="btn btn-light mb-4">
+        ⬅ Back
+    </button>
+
+    <div class="detail-card">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+                <img id="detailMainImg" class="main-detail-img">
+                <div id="detailThumbs" class="thumb-row mt-3"></div>
+            </div>
+
+            <div class="col-md-6 text-white">
+                <h2 id="detailTitle"></h2>
+                <p id="detailDesc"></p>
+                <h3 id="detailPrice"></h3>
+
+                <div class="qty-box mt-4">
+                    <button onclick="changeQty(-1)">-</button>
+                    <span id="detailQty">1</span>
+                    <button onclick="changeQty(1)">+</button>
+                </div>
+
+                <div class="mt-4">
+                    <button onclick="addToCart()" class="btn btn-primary me-2">
+                        Add To Cart
+                    </button>
+
+                    <button onclick="buyNow()" class="btn btn-success">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CART -->
+<div class="cart-sidebar" id="cartSidebar">
+
+    <div class="cart-header">
+        <h4>🛒 Cart</h4>
+        <span onclick="toggleCart()">✖</span>
+    </div>
+
+    <ul id="cartItems"></ul>
+
+    <h5 id="totalPrice">₹0</h5>
+
+    <button onclick="payNow()" class="btn btn-success w-100">
+        Pay Now
+    </button>
+</div>
+
+
+<!-- FLOAT CART -->
+<div class="floating-cart" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
+</div>
+
+
+<!-- FOOTER -->
+<div id="footer" style="color: white;"></div>
+
+<script src="../Components/js/components.js"></script>
+
+<script>
+    container.innerHTML += `
+<div class="col-md-4">
+   <div class="product-card" onclick="openDetail(${p.id})">
+      <img src="${p.images[0]}">
+      <div class="p-3 text-center">
+         <h5>${p.name}</h5>
+         <p>₹${p.price}</p>
+      </div>
+   </div>
+</div>
+`;
+window.onload = function(){
+    loadNavbar("product");
+    loadFooter();
+}
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+fetch("../Components/footer.html")
+.then(res => res.text())
+.then(data => {
+    document.getElementById("footer").innerHTML = data;
+});
+</script>
+<script>
+window.onload = function () {
+    loadNavbar("product");
+    loadFooter();
+};
+</script>
+<script src="../Components/js/components.js"></script>
+<script>
+    loadNavbar("product"); // hides register
+</script>
+<script>
+const products = [
+    {
+        id:1,
+        name:"Basic Starter Kit for Arduino Starter with UNO R3",
+        price:1200,
+        images:["../Images/JPEG/ardino.jpg"],
+        desc:"Electronic components"
+    },
+    {
+        id:2,
+        name:"2WD Ultrasonic Smart Tracking Moteur Robot Car Kit For Arduino",
+        price:1500,
+        images:["../Images/JPEG/Robot_Car_Arduino.jpg","../Images/JPEG/robot_1.jpg"],
+        desc:"Complete robot car kit"
+    },
+    {
+        id:3,
+        name:"Robotic Arms",
+        price:2000,
+        images:["../Images/JPEG/robot_3.jpg","../Images/JPEG/ardino.jpg","../Images/JPEG/Robot_Car_Arduino.jpg"],
+        desc:"Real world Robot"
+    }
+];
+
+let selectedProduct = null;
+let quantity = 1;
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// LOAD PRODUCTS
+const container = document.getElementById("productList");
+
+products.forEach(p => {
+    container.innerHTML += `
+        <div class="col-md-4">
+            <div class="product-card" onclick="openDetail(${p.id})">
+                <img src="${p.images[0]}">
+                <div class="p-3">
+                    <h5>${p.name}</h5>
+                    <p>₹${p.price}</p>
+                </div>
+            </div>
+        </div>
+    `;
+});
+
+// OPEN DETAIL
+function openDetail(id){
+    selectedProduct = products.find(p => p.id === id);
+    quantity = 1;
+
+    document.querySelector(".product-ui").classList.add("d-none");
+    document.getElementById("productDetail").classList.remove("d-none");
+
+    document.getElementById("detailTitle").innerText = selectedProduct.name;
+    document.getElementById("detailDesc").innerText = selectedProduct.desc;
+    document.getElementById("detailPrice").innerText = "₹" + selectedProduct.price;
+    document.getElementById("detailMainImg").src = selectedProduct.images[0];
+    document.getElementById("detailQty").innerText = quantity;
+
+    let thumbs = document.getElementById("detailThumbs");
+    thumbs.innerHTML = "";
+
+    selectedProduct.images.forEach(img => {
+        thumbs.innerHTML += `<img src="${img}" width="60" onclick="changeImage('${img}')">`;
+    });
+}
+
+function changeImage(src){
+    document.getElementById("detailMainImg").src = src;
+}
+
+function changeQty(val){
+    quantity += val;
+    if(quantity < 1) quantity = 1;
+    document.getElementById("detailQty").innerText = quantity;
+}
+
+// ADD TO CART
+function addToCart(){
+    const existing = cart.find(p => p.id === selectedProduct.id);
+
+    if(existing){
+        existing.qty += quantity;
+    } else {
+        cart.push({...selectedProduct, qty: quantity});
+    }
+
+    renderCart();
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to Cart ✅");
+}
+
+// CART UI
+function renderCart(){
+    let list = document.getElementById("cartItems");
+    list.innerHTML = "";
+
+    let total = 0;
+    let count = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+
+        list.innerHTML += `
+            <li class="cart-card">
+                <img src="${item.images[0]}" class="cart-img">
+                <div class="cart-info">
+                    <h6>${item.name}</h6>
+                    <p>₹${item.price}</p>
+                    <div class="qty-box">
+                        <span onclick="changeCartQty(${item.id},-1)">-</span>
+                        ${item.qty}
+                        <span onclick="changeCartQty(${item.id},1)">+</span>
+                    </div>
+                </div>
+                <span onclick="removeItem(${item.id})">❌</span>
+            </li>
+        `;
+    });
+
+    document.getElementById("totalPrice").innerText = "Total: ₹" + total;
+    document.getElementById("cartCount").innerText = count;
+}
+
+function changeCartQty(id, val){
+    const item = cart.find(p => p.id === id);
+    item.qty += val;
+
+    if(item.qty <= 0){
+        cart = cart.filter(p => p.id !== id);
+    }
+
+    renderCart();
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function removeItem(id){
+    cart = cart.filter(item => item.id !== id);
+    renderCart();
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function toggleCart(){
+    document.getElementById("cartSidebar").classList.toggle("active");
+}
+
+function goBack(){
+    document.getElementById("productDetail").classList.add("d-none");
+    document.querySelector(".product-ui").classList.remove("d-none");
+}
+
+// 💳 BUY NOW (SINGLE PRODUCT)
+function buyNow(){
+    let total = selectedProduct.price * quantity;
+    openRazorpay(total, selectedProduct.name);
+}
+
+// 💳 FULL CART PAYMENT
+function payNow(){
+    let total = 0;
+    cart.forEach(item => total += item.price * item.qty);
+
+    if(total === 0){
+        alert("Cart empty!");
+        return;
+    }
+
+    openRazorpay(total, "Cart Payment");
+}
+
+// ✅ COMMON RAZORPAY FUNCTION
+function openRazorpay(total, desc){
+    var options = {
+        key: "rzp_test_Sgx9RI8no2lKpb", // YOUR API KEY
+        amount: total * 100,
+        currency: "INR",
+        name: "Kidz Robotics",
+        description: desc,
+
+        prefill: {
+            name: "Customer",
+            email: "test@gmail.com",
+            contact: "9876543210"
+        },
+
+        method: {
+            upi: true
+        },
+
+        handler: function (response){
+            alert("Payment Successful ✅ ID: " + response.razorpay_payment_id);
+            cart = [];
+            localStorage.removeItem("cart");
+            renderCart();
+        },
+
+        theme: {
+            color: "#00c6ff"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+}
+
+// INIT
+renderCart();
+</script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background: #6bb25d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 40px;
+}
+
+.bulb {
+  width: 80px;
+  height: 150px;
+  background: white;
+  mask: url('bulb.png') no-repeat center / contain;
+  -webkit-mask: url('bulb.png') no-repeat center / contain;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* Hover colors */
+.bulb:nth-child(1):hover {
+  background: yellow;
+  box-shadow: 0 0 20px yellow;
+}
+
+.bulb:nth-child(2):hover {
+  background: red;
+  box-shadow: 0 0 20px red;
+}
+
+.bulb:nth-child(3):hover {
+  background: cyan;
+  box-shadow: 0 0 20px cyan;
+}
+
+.bulb:nth-child(4):hover {
+  background: orange;
+  box-shadow: 0 0 20px orange;
+}
+
+.bulb:nth-child(5):hover {
+  background: violet;
+  box-shadow: 0 0 20px violet;
+}
+</style>
+</head>
+<body>
+
+<div class="bulb"></div>
+<div class="bulb"></div>
+<div class="bulb"></div>
+<div class="bulb"></div>
+<div class="bulb"></div>
+
+</body>
+</html>

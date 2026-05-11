@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner Robotics</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 60px;
+            background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
+        }
+
+        .hero-text h1 {
+            font-size: 70px;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            color: #cbd5e1;
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        .hero img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .btn-custom {
+            background: #06b6d4;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+            background: #0891b2;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .card-box {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 25px;
+            transition: 0.4s;
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .card-box:hover {
+            transform: translateY(-10px);
+            border: 1px solid #06b6d4;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+        }
+
+        .card-box h3 {
+            margin-top: 20px;
+            font-size: 26px;
+        }
+
+        .icon {
+            font-size: 55px;
+        }
+
+        .stem-section {
+            padding: 100px 0;
+        }
+
+        .stem-item {
+            background: #111827;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .stem-item:hover {
+            border: 1px solid cyan;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, #06b6d4, #9333ea);
+            padding: 80px;
+            border-radius: 40px;
+            text-align: center;
+            margin: 80px auto;
+        }
+
+        .cta h2 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .stem-projects {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            transition: 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+        }
+
+        .project-header h3 {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        .project-header p {
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .project-item:hover {
+            background: rgba(56, 189, 248, 0.15);
+            transform: scale(1.02);
+        }
+
+        .project-item span {
+            font-size: 2rem;
+        }
+
+        .project-item h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .project-item p {
+            margin: 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media(max-width:768px) {
+
+            .project-card {
+                padding: 20px;
+            }
+
+            .project-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+        }
+        .footer-section {
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color: #cbd5e1;
+    padding: 70px 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle stars */
+.footer-section::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.25;
+}
+
+/* LOGO */
+.footer-logo {
+    color: #00d4ff;
+    font-weight: bold;
+}
+
+/* TEXT */
+.footer-text {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* LINKS */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00c6ff;
+    padding-left: 5px;
+}
+
+/* SOCIAL ICONS */
+.social-icons i {
+    font-size: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons i:hover {
+    color: #00c6ff;
+    transform: scale(1.3);
+}
+
+/* NEWSLETTER */
+.newsletter {
+    display: flex;
+    margin-top: 10px;
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 25px 0 0 25px;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter button:hover {
+    box-shadow: 0 0 15px #00c6ff;
+}
+
+/* BOTTOM */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 30px;
+    padding-top: 15px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .newsletter {
+        flex-direction: column;
+    }
+
+    .newsletter input {
+        border-radius: 25px;
+        margin-bottom: 10px;
+    }
+
+    .newsletter button {
+        border-radius: 25px;
+    }
+}
+/* Header */
+.navbar {
+    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar-brand {
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #00c6ff;
+    bottom: -4px;
+    left: 0;
+    transition: 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cart-icon {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-icon span {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: red;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+    </style>
+</head>
+
+<body>
+<!-- Header -->
+ <div class="container-fluid w-100 h-100">
+            <div class="row ">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-fluid">
+                        <div class="navbar-collapse" id="navbarNav">
+                            <a class="navbar-brand" href="#">
+                                <img src="../Images/JPEG/logo_2.png" class="image" style="height: 48px;">
+                            </a>
+
+                            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/navbar.html">Home</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/about.html">About</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/product.html">Products</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/contact.html">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="btn btn-primary ms-2">Register Now</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-lg-6 hero-text">
+                    <h1>
+                        Build.<br>
+                        Learn.<br>
+                        Innovate.
+                    </h1>
+
+                    <p>
+                        A futuristic robotics learning experience for kids where creativity,
+                        engineering, coding, and STEM activities come together through fun
+                        hands-on projects.
+                    </p>
+
+                    <button class="btn-custom">Enroll Now</button>
+                </div>
+
+                <div class="col-lg-6">
+                    <img
+                        src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE SECTION -->
+    <section class="py-5">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>What Students Learn</h2>
+                <p>
+                    Hands-on robotics modules designed to develop creativity, problem-solving,
+                    coding skills, and engineering fundamentals through exciting real-world projects.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- 1 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Robotics">
+                        <div class="icon">🤖</div>
+                        <h3>Understanding Robotics</h3>
+                        <p>
+                            Discover how robots work in industries, homes, hospitals,
+                            and space exploration through practical demonstrations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Electronics">
+                        <div class="icon">💡</div>
+                        <h3>Basic Electronics</h3>
+                        <p>
+                            Learn LEDs, resistors, batteries, circuits, and motors
+                            by building real electronic experiments.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Sensors">
+                        <div class="icon">📡</div>
+                        <h3>Sensor Awareness</h3>
+                        <p>
+                            Explore IR, ultrasonic, sound, and light sensors
+                            to create smart responsive robotic systems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Coding">
+                        <div class="icon">🧩</div>
+                        <h3>Computer Proficiency</h3>
+                        <p>
+                            Build coding confidence using beginner-friendly
+                            visual programming and logic-building exercises.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Models">
+                        <div class="icon">⚙️</div>
+                        <h3>Electro-Mechanical Models</h3>
+                        <p>
+                            Build moving robotic models using motors,
+                            gears, wheels, and mechanical structures.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="STEM">
+                        <div class="icon">🧠</div>
+                        <h3>STEM Activities</h3>
+                        <p>
+                            Strengthen analytical thinking through science,
+                            maths puzzles, algorithms, and fun challenges.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Wireless">
+                        <div class="icon">📶</div>
+                        <h3>Wireless Communication</h3>
+                        <p>
+                            Learn how robots communicate using Bluetooth,
+                            WiFi, and remote-control technologies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Projects">
+                        <div class="icon">🚀</div>
+                        <h3>Hands-on Projects</h3>
+                        <p>
+                            Build exciting real-world robotics projects
+                            that boost creativity and confidence.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="col-md-4">
+                    <div class="card-box">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800"
+                            class="img-fluid rounded-4 mb-3" alt="Thinking">
+                        <div class="icon">🧠</div>
+                        <h3>Logical Thinking</h3>
+                        <p>
+                            Develop critical thinking and problem-solving
+                            skills through robotics challenges and puzzles.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STEM SECTION -->
+
+    <section class="stem-section">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>STEM Activities</h2>
+            </div>
+
+            <div class="stem-item">
+                ✅ Converting textbook theories into working STEM projects.
+            </div>
+
+            <div class="stem-item">
+                ✅ Learning Mechanics, Magnetism, and Electronics.
+            </div>
+
+            <div class="stem-item">
+                ✅ Building Water Quality Testers and Gas Leakage Detectors.
+            </div>
+
+            <div class="stem-item">
+                ✅ Teaching students to build scientific prototypes.
+            </div>
+
+            <div class="stem-item">
+                ✅ Calculating angles, speed and distance for robots.
+            </div>
+
+            <div class="stem-item">
+                ✅ Hardware, software and computer basics mastery.
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= STEM PROJECTS SECTION ================= -->
+    <section class="stem-projects py-5">
+        <div class="container">
+
+            <!-- Section Heading -->
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-5 text-gradient">
+                    🚀 Projects
+                </h2>
+                <p class=" fs-5 color-white" style="color: white;">
+                    Explore exciting electronics and Arduino-based projects with practical learning.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- ================= Breadboard Projects ================= -->
+                <div class="col-lg-6">
+                    <div class="project-card h-100">
+
+                        <div class="project-header">
+                            <h3>🔌 Bread Board Projects</h3>
+                            <p>Build beginner-friendly electronics circuits using real components.</p>
+                        </div>
+
+                        <div class="project-list">
+
+                            <div class="project-item">
+                                <span>💡</span>
+                                <div>
+                                    <h5>Series & Parallel Circuit LED Blinking</h5>
+                                    <p>Create automatic blinking LED circuits using 555 IC.</p>
+                                </div>
+                            </div>
+                            <div class="project-item">
+                                <span>💡</span>
+                                <div>
+                                    <h5>Switches and its types</h5>
+                                    <p>Create automatic blinking LED circuits using 555 IC.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>✨</span>
+                                <div>
+                                    <h5>Single LED Blinking using 555 Timer</h5>
+                                    <p>Learn alternating LED patterns and timing control.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>✨</span>
+                                <div>
+                                    <h5>Dual LED Blink using 555 Timer</h5>
+                                    <p>Learn alternating LED patterns and timing control.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>⚡</span>
+                                <div>
+                                    <h5>LED Chaser</h5>
+                                    <p>Design running light effects used in decorations and displays.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>🚦</span>
+                                <div>
+                                    <h5>Traffic Light System</h5>
+                                    <p>Simulate real traffic signals using LEDs and timers.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>📡</span>
+                                <div>
+                                    <h5>IR Remote Tester/Receiver</h5>
+                                    <p>Detect and test IR remote signals using receiver modules.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= Arduino Projects ================= -->
+                <div class="col-lg-6">
+                    <div class="project-card h-100">
+
+                        <div class="project-header">
+                            <h3>🤖 Sensor Projects</h3>
+                            <p>Build smart automation and sensor-based innovative systems.</p>
+                        </div>
+
+                        <div class="project-list">
+
+                            <div class="project-item">
+                                <span>🔴</span>
+                                <div>
+                                    <h5>LED Chaser using IR Sensor</h5>
+                                    <p>Control LED patterns using infrared obstacle sensors.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>🔔</span>
+                                <div>
+                                    <h5>Buzzer Alarmusing IR Sensor</h5>
+                                    <p>Build automatic alert systems using IR detection.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>🦯</span>
+                                <div>
+                                    <h5>Blind Stick using IR Sensor</h5>
+                                    <p>Develop smart assistive technology for obstacle detection.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>🌱</span>
+                                <div>
+                                    <h5>Soil moisture sensor</h5>
+                                    <p>Develop smart assistive technology for obstacle detection.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>🔥</span>
+                                <div>
+                                    <h5>Fire Alarm using Flame Sensor</h5>
+                                    <p>Develop smart assistive technology for obstacle detection.</p>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
+                                <span>🌧️</span>
+                                <div>
+                                    <h5>Rain dector using Rain Drop Sensor</h5>
+                                    <p>Develop smart assistive technology for obstacle detection.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- CTA -->
+
+    <div class="container">
+        <div class="cta">
+
+            <h2>Ready to Start the Robotics Journey?</h2>
+
+            <p class="mt-4">
+                Let your child explore innovation, creativity, and engineering through exciting robotics projects.
+            </p>
+
+            <button class="btn btn-light btn-lg mt-4">
+                Register Today
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <footer class="footer-section">
+  <div class="container">
+    <div class="row">
+
+      <!-- BRAND -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h2 class="footer-logo">🚀 Kidz Robotics</h2>
+        <p class="footer-text">
+          Inspiring young minds through robotics, coding, and innovation.
+          Building the engineers of tomorrow.
+        </p>
+
+        <div class="social-icons">
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-linkedin"></i>
+          <i class="bi bi-youtube"></i>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Contact</h5>
+        <p>📧 info@kidzrobotics.com</p>
+        <p>📞 +91 9466975569</p>
+        <p>📍 India</p>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Stay Updated</h5>
+        <p>Subscribe for latest updates</p>
+
+        <div class="newsletter">
+          <input type="email" placeholder="Enter email">
+          <button>Send</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom text-center">
+      <p>© 2026 Kidz Robotics Academy | All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

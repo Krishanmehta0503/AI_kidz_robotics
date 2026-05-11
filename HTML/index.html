@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../CSS/index.css">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Navbar</title>
+</head>
+
+<body>
+    <div class="container-fluid w-100 h-100">
+        <!-- Navbar -->
+        <div class="container-fluid w-100 h-100">
+            <div class="row ">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-fluid">
+                        <div class="navbar-collapse" id="navbarNav">
+                            <a class="navbar-brand" href="#">
+                                <img src="../Images/JPEG/logo_2.png" class="image" style="height: 48px;">
+                            </a>
+
+                            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/navbar.html">Home</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/about.html">About</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/product.html">Products</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../HTML/contact.html">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="btn btn-primary ms-2">Register Now</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <!-- ✅ Carousel -->
+            <div class="container-fluid mt-1 w-100">
+
+                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+                    </div>
+
+                    <!-- Slides -->
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <div class="robot_1"></div>
+                        </div>
+                        <div class="carousel-item ">
+                            <div class="robot_2">
+                                <p>
+                                    Welcome to Kidz Robotics Academy 🚀 <br>
+                                    Learn Robotics, Coding & Innovation
+                                    <button class="btn btn-primary ms-2">Register Now</button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="robot_3">
+                                <p>
+                                    Welcome to Kidz Robotics Academy 🚀 <br>
+                                    Learn Robotics, Coding & Innovation
+                                    <button class="btn btn-primary ms-2">Register Now</button>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Controls -->
+                        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button> -->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Stem Education -->
+        <div class="container-fluid">
+            <section class="about-us py-11" style="margin-top:2%;">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="fw-bold mb-3">STEM Education For Kids</h2>
+                        <h3 style="color: #B4111A;">Building a Passion for Engineering, Maths and Science</h3>
+                        <p class="text-muted mb-3">
+                            Children have a natural curiosity that lends itself to science, technology, math, and
+                            engineering. At KidoBotics, we inspire kids ages 8 to 16 to build on their innate desire for
+                            answers by exploring engineering concepts in a fun, hands-on way. We closely work with
+                            schools and also provide after-school programs, evening classes, camps and special events
+                            designed to present kids with challenging yet accessible engineering activities from which
+                            they can learn and grow.
+                        </p>
+                        <p class="mb-3 paragraph">Ready to learn more about our programs at KidoBotics? Explore our site
+                            and sign up today!</p>
+                    </div>
+                    <div class="col-lg-6 mb-4 mb-lg-0 video-container">
+
+                        <video class="w-100 h-100" autoplay muted loop>
+                            <source src="../videos/mp4/robotics.mp4" type="video/mp4">
+                        </video>
+
+                        <!-- Text on Video -->
+                        <div class="video-text">
+                            <h2>Learn Robotics 🚀</h2>
+                            <p>Build your future with technology</p>
+                            <button class="btn btn-primary">Enroll Now</button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Courses Section -->
+        <section class="product-section">
+
+            <div class="container-fluid text-center">
+                <h2 class="product-title">Courses</h2>
+
+                <div class="row g-4 mt-4">
+
+                    <!-- CARD 1 -->
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <div class="card-img">
+                                <img src="../Images/JPEG/robot_1.jpg" alt="">
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Beginner Level</h4>
+                                <p>Short description of product or service.</p>
+
+                                <a href="../HTML/beginner.html" class="btn btn-primary card-btn">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2 -->
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <div class="card-img">
+                                <img src="../Images/JPEG/robot_2.jpg" alt="">
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Intermediate Level</h4>
+                                <p>Modern responsive card layout.</p>
+                                <a href="../HTML/intermediate.html" class="btn btn-primary card-btn">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3 -->
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <div class="card-img">
+                                <img src="../Images/JPEG/robot_3.jpg" alt="">
+                            </div>
+
+                            <div class="card-content">
+                                <h4>Advance Level</h4>
+                                <p>Modern responsive card layout.</p>
+                                <a href="../HTML/advance.html" class="btn btn-primary card-btn">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <!-- Bulb Section -->
+    <section class="hero-section">
+
+        <!-- BULB ROW -->
+        <div class="container">
+            <hr style="height:4px; background:white; border:none; opacity:1;">
+            <div class="d-flex justify-content-between flex-nowrap bulb-row text-center">
+
+                <div class="bulb-box yellow">
+                    <!-- <div class="wire"></div> -->
+
+                    <div class="bulb"></div>
+                    <p>Build problem<br>solving skills</p>
+                </div>
+
+                <div class="bulb-box blue">
+                    <div class="wire"></div>
+
+                    <div class="bulb" onclick="this.classList.toggle('active')">
+                        <!-- <img src="../Images/PNG/value-bulb.png" alt="bulb"> -->
+                    </div>
+                    <p>Discover how<br>things work</p>
+                </div>
+                <div class="bulb-box red">
+                    <div class="wire"></div>
+
+                    <div class="bulb" onclick="this.classList.toggle('active')">
+                        <!-- <img src="../Images/PNG/value-bulb.png" alt="bulb"> -->
+                    </div>
+
+                    <p>Changing the face of<br>Science</p>
+                </div>
+
+                <div class="bulb-box green">
+                    <div class="wire"></div>
+
+                    <div class="bulb" onclick="this.classList.toggle('active')">
+                        <!-- <img src="../Images/PNG/value-bulb.png" alt="bulb"> -->
+                    </div>
+                    <p>Learn math and science<br>while having fun</p>
+                </div>
+
+                <div class="bulb-box purple">
+                    <div class="wire"></div>
+
+                    <div class="bulb" onclick="this.classList.toggle('active')">
+                        <!-- <img src="../Images/PNG/value-bulb.png" alt="bulb"> -->
+                    </div>
+
+                    <p>Engage in real world<br>engineering problems</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER CONTENT -->
+        <div class="center-content text-center text-white">
+            <h1>How We Create Light<br>Bulb Moments</h1>
+            <button class="btn register-btn btn-primary">Register NOW !</button>
+        </div>
+
+        <!-- SIDE IMAGES -->
+        <img src="../Images/JPEG/left.jpg" class="child left">
+        <img src="../Images/JPEG/right.jpg" class="child right">
+
+    </section>
+    <!-- Discover Kidobotics -->
+    <section class="discover-section">
+
+        <div class="container-fluid text-center">
+            <h2 class="discover-title">Discover Kidobotics</h2>
+
+            <div class="row g-4 mt-4">
+
+                <!-- CARD 1 -->
+                <div class="col-md-4">
+                    <div class="discover-card">
+                        <img src="../Images/JPEG/robot_1.jpg" alt="">
+                        <h3>Basic Kit</h3>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="col-md-4">
+                    <div class="discover-card">
+                        <img src="../Images/JPEG/robot_2.jpg" alt="">
+                        <h3>100+ Project Kit</h3>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="col-md-4">
+                    <div class="discover-card">
+                        <img src="../Images/JPEG/robot_3.jpg" alt="">
+                        <h3>Advance Project Kits</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <!-- Explore World -->
+    <section class="space-section">
+
+        <div class="container-fluid">
+
+            <!-- TOP CONTENT -->
+            <div class="row align-items-center">
+
+                <!-- LEFT TEXT -->
+                <div class="col-lg-6">
+                    <h1 class="main-heading">Explore the Way the World Works</h1>
+
+                    <p class="main-text">
+                        Engineering is one of the fastest-growing fields in the world, but the number
+                        of qualified workers is not keeping up with demand. Our training programs
+                        are designed to bring out innovation and creativity.
+                    </p>
+
+                    <p class="main-text">
+                        Children are filled with curiosity and creative potential waiting to be nurtured.
+                        Hands-on activities help them plan, investigate and implement their ideas.
+                    </p>
+
+                    <div class="cta-box">
+                        <button class="glow-btn">Register NOW!</button>
+                        <span class="cta-text">We’re inspiring the next generation of engineers!</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT IMAGE -->
+                <div class="col-lg-6 text-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" class="robot-img" alt="robot">
+                </div>
+
+            </div>
+
+            <!-- REVIEW SECTION -->
+            <div class="review-section text-center mt-5">
+
+                <h2 class="review-heading">Out of This World Reviews</h2>
+
+                <div class="row mt-4">
+
+                    <div class="col-md-4">
+                        <div class="review-card">
+                            <span class="star">⭐</span>
+                            <p>“It’s like a playground for their mind!”</p>
+                            <h5>- Rahul Srivastava</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="review-card">
+                            <span class="star">⭐</span>
+                            <p>“It’s fun and educational, it provides opportunities to kids.”</p>
+                            <h5>- Priya Mehta</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="review-card">
+                            <span class="star">⭐</span>
+                            <p>“I was amazed by the brilliance.”</p>
+                            <h5>- Garima Malhotra</h5>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- BRAND -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h2 class="footer-logo">🚀 Kidz Robotics</h2>
+                    <p class="footer-text">
+                        Inspiring young minds through robotics, coding, and innovation.
+                        Building the engineers of tomorrow.
+                    </p>
+
+                    <div class="social-icons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-linkedin"></i>
+                        <i class="bi bi-youtube"></i>
+                    </div>
+                </div>
+
+                <!-- LINKS -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="navbar.html">Home</a></li>
+                        <li><a href="../HTML/Product.html">Products</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- CONTACT -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact</h5>
+                    <p>📧 info@kidzrobotics.com</p>
+                    <p>📞 +91 9466975569</p>
+                    <p>📍 India</p>
+                </div>
+
+                <!-- NEWSLETTER -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Stay Updated</h5>
+                    <p>Subscribe for latest updates</p>
+
+                    <div class="newsletter">
+                        <input type="email" placeholder="Enter email">
+                        <button>Send</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BOTTOM -->
+            <div class="footer-bottom text-center">
+                <p>© 2026 Kidz Robotics Academy | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+    <script>
+        function loadNavbar(page) {
+
+            let showRegister = page !== "product";
+
+            document.getElementById("headers").innerHTML = `
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold">Kidz Robotics</a>
+
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="../Home/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Product/Product.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-3">
+
+                <div class="cart-icon" onclick="toggleCart()">
+                    🛒 <span id="cartCount">0</span>
+                </div>
+
+                ${showRegister ? `<button class="btn btn-primary">Register Now</button>` : ""}
+
+            </div>
+
+        </div>
+    </nav>
+    `;
+        }
+
+        function loadFooter() {
+            document.getElementById("footer").innerHTML = `
+<footer class="footer-section">
+  <div class="container">
+    <div class="row">
+
+      <!-- BRAND -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h2 class="footer-logo">🚀 Kidz Robotics</h2>
+        <p class="footer-text">
+          Inspiring young minds through robotics, coding, and innovation.
+          Building the engineers of tomorrow.
+        </p>
+
+        <div class="social-icons">
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-linkedin"></i>
+          <i class="bi bi-youtube"></i>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Contact</h5>
+        <p>📧 info@kidzrobotics.com</p>
+        <p>📞 +91 9876543210</p>
+        <p>📍 India</p>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Stay Updated</h5>
+        <p>Subscribe for latest updates</p>
+
+        <div class="newsletter">
+          <input type="email" placeholder="Enter email">
+          <button>Send</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom text-center">
+      <p>© 2026 Kidz Robotics Academy | All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+    `;
+        }
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const bulbs = document.querySelectorAll(".bulb");
+
+        function getRandomColor() {
+            const colors = [
+                "#ff4d4d", "#ffd11a", "#00e6e6",
+                "#66ff66", "#cc66ff", "#ff944d",
+                "#ff66b2", "#66b3ff"
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        bulbs.forEach(bulb => {
+            bulb.addEventListener("mouseenter", () => {
+                bulb.style.setProperty("--bulb-color", getRandomColor());
+            });
+
+            bulb.addEventListener("mouseleave", () => {
+                bulb.style.removeProperty("--bulb-color");
+            });
+        });
+        const btn = document.querySelector(".glow-btn");
+
+        btn.addEventListener("mouseenter", () => {
+            btn.style.boxShadow = "0 0 30px #00c6ff, 0 0 60px #0072ff";
+        });
+
+        btn.addEventListener("mouseleave", () => {
+            btn.style.boxShadow = "0 0 15px #00c6ff";
+        });
+        const cards = document.querySelectorAll(".discover-card");
+
+        cards.forEach(card => {
+            card.addEventListener("mouseenter", () => {
+                card.style.boxShadow = "0 0 25px rgba(0, 198, 255, 0.6)";
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.boxShadow = "none";
+            });
+        });
+        const card = document.querySelectorAll(".product-card");
+
+        card.forEach(card => {
+            card.addEventListener("mouseenter", () => {
+                card.style.boxShadow = "0 0 25px rgba(0,198,255,0.6)";
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.boxShadow = "none";
+            });
+        });
+    </script>
+</body>
+
+</html>
